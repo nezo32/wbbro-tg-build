@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "nohup node dist/index.js >> app.log 2>&1 &"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "@types/node": "^22.10.10",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
+    "nohup": "^0.1.0",
     "telegraf": "^4.16.3",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"

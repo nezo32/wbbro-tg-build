@@ -17,7 +17,16 @@ enum ButtonClickEvents {
   BuildProdFrontend = "build-prod-frontend",
 }
 
-bot.on("text", (ctx) => {
+const acceptableUserIds = [1026555793, 845519515, 835007860];
+const acceptableChatsIds = [-1002479749586];
+
+bot.command(["bot", "start"], (ctx) => {
+  if (
+    !acceptableUserIds.includes(ctx.message.from.id) &&
+    !acceptableChatsIds.includes(ctx.message.chat.id)
+  ) {
+    return ctx.reply("YOU DON'T HAVE ACCESS!");
+  }
   return ctx.reply(
     `
 ░░░░░░░░▄██▄░░░░░░▄▄░░
@@ -95,18 +104,22 @@ async function triggerPipeline(
 bot.action(ButtonClickEvents.DeployDevBackend, async (ctx) => {
   await triggerPipeline("backend", "dev");
   await ctx.answerCbQuery();
+  return ctx.reply("Pipeline started!");
 });
 bot.action(ButtonClickEvents.DeployDevFrontend, async (ctx) => {
   await triggerPipeline("frontend", "dev");
   await ctx.answerCbQuery();
+  return ctx.reply("Pipeline started!");
 });
 bot.action(ButtonClickEvents.BuildProdBackend, async (ctx) => {
   await triggerPipeline("backend", "main");
   await ctx.answerCbQuery();
+  return ctx.reply("Pipeline started!");
 });
 bot.action(ButtonClickEvents.BuildProdFrontend, async (ctx) => {
   await triggerPipeline("frontend", "main");
   await ctx.answerCbQuery();
+  return ctx.reply("Pipeline started!");
 });
 
 bot.launch();
