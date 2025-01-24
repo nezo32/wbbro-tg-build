@@ -2,19 +2,21 @@
   "name": "wbbro-tgbot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "tsc -w src/index.ts",
+    "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "tsc && node dist/index.js"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^22.10.10",
+    "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "telegraf": "^4.16.3",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }
 }
